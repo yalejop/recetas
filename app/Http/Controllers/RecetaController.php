@@ -21,7 +21,10 @@ class RecetaController extends Controller
      */
     public function index()
     {
-        return view('recetas.index');
+        //auth()->user()->recetas->dd();
+
+        $recetas = Auth::user()->recetas;
+        return view('recetas.index', compact('recetas'));
     }
 
     /**
