@@ -106,7 +106,11 @@ class RecetaController extends Controller
      */
     public function show(Receta $receta)
     {
-        //
+        //Algunos méodos para obtener una receta
+        //$receta = Receta::find($receta);
+        //$receta = Receta::findOrFail($receta);
+
+        return view('recetas.show', compact('receta'));
     }
 
     /**
