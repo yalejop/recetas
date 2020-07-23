@@ -40,17 +40,19 @@
                     <select name="categoria" class="form-control @error('categoria')
                     is-invalid @enderror" id="categoria">
                         <option value="">-- Seleccione --</option>
-                        @foreach ($categorias as $id => $categoria)
-                         <option value="{{$id}}"
-                         {{ old('categoria') == $id ? 'selected' : ''}}
-                         >{{$categoria}}</option>    
+                        @foreach ($categorias as $categoria)
+                            <option 
+                            value="{{$categoria->id}}"
+                            {{ old('categoria') == $categoria->id ? 'selected' : ''}}
+                            >{{$categoria->nombre}}
+                            </option>    
                         @endforeach
                     </select>
-                    @error('categoria')
-                        <span class="invalid-feedback d-block" role="alert">
-                            <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
+                        @error('categoria')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{$message}}</strong>
+                            </span>
+                        @enderror
                 </div>
 
                 <div class="form-group mt-3">

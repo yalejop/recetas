@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoriaReceta;
 use App\Receta;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +36,13 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        $categorias = DB::table('categoria_receta')->get()->pluck('nombre', 'id');
+        //BD::table('categoria_recetas')->get()->pluck('nombre', 'id')->dd();
+
+        //Obtener las categorias (sin modelo)
+        //$categorias = DB::table('categoria_recetas')->get()->pluck('nombre', 'id');
+
+        //con modelo
+        $categorias = CategoriaReceta::all(['id', 'nombre']);
 
         return view('recetas.create', compact('categorias'));
     }
@@ -47,6 +55,7 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
+
         //dd( $request['imagen']->store('upload-recetas', 'public'));
 
         //validación
@@ -66,17 +75,27 @@ class RecetaController extends Controller
         $img->save();
 
         //almacenar en la base ed datos(sin modelo)
-        DB::table('recetas')->insert([
+        /* DB::table('recetas')->insert([
             'titulo' => $data['titulo'],
             'preparacion' => $data['preparacion'],
             'ingredientes' => $data['ingredientes'],
             'imagen' => $ruta_imagen,
             'user_id' => Auth::user()->id,
             'categoria_id' => $data['categoria'],
+        ]); */
+
+        //almacenar en la base de datos con modelo
+        auth()->user()->recetas()->create([
+            'titulo' => $data['titulo'],
+            'preparacion' => $data['preparacion'],
+            'ingredientes' => $data['ingredientes'],
+            'imagen' => $ruta_imagen,
+            'categoria_id' => $data['categoria'],
         ]);
 
         //redireccionar
-        return view('recetas.index');
+        //return view('recetas.index');
+        return redirect()->action('RecetaController@index');
     }
 
     /**
