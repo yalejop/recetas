@@ -13,7 +13,7 @@
 @section('content')
 
     <h2 class="text-center mb-5">
-        Crear Nuevas Recetas
+        Editar Receta
     </h2>
 
     <div class="row justify-content-center mt-5">
