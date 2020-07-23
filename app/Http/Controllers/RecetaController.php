@@ -123,7 +123,7 @@ class RecetaController extends Controller
     {
         $categorias = CategoriaReceta::all(['id', 'nombre']);
 
-        return view('recetas.edit', compact('categorias'));
+        return view('recetas.edit', compact('categorias', 'receta'));
     }
 
     /**
@@ -135,8 +135,37 @@ class RecetaController extends Controller
      */
     public function update(Request $request, Receta $receta)
     {
-        //
-    }
+          //validación
+          $data = $request->validate([
+            'titulo' => 'required|min:6',
+            'preparacion' => 'required',
+            'ingredientes' => 'required',
+            'categoria' => 'required',
+        ]);
+
+        //Asignar los valores
+        $receta->titulo = $data['titulo'];
+        $receta->preparacion = $data['preparacion'];
+        $receta->ingredientes = $data['ingredientes'];
+        $receta->categoria_id = $data['categoria'];
+
+        //Si el usuario sube una nueva imagen
+        if(request('imagen')) {
+            //obtener ruta de la imagen
+        $ruta_imagen = $request['imagen']->store('upload-recetas', 'public');
+
+        //resize de la imagen
+        $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(1000, 550);
+        $img->save();
+
+        //Asignar al Objeto
+        $receta->imagen = $ruta_imagen;
+        }
+
+        $receta->save();
+
+        return redirect()->route('recetas.index');
+    }    
 
     /**
      * Remove the specified resource from storage.
