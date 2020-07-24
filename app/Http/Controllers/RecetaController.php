@@ -135,8 +135,10 @@ class RecetaController extends Controller
      */
     public function update(Request $request, Receta $receta)
     {
-          //validación
-          $data = $request->validate([
+        //Revisar el policy
+        $this->authorize('update', $receta);
+        //validación
+        $data = $request->validate([
             'titulo' => 'required|min:6',
             'preparacion' => 'required',
             'ingredientes' => 'required',
