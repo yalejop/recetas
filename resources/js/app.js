@@ -4,6 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import Vue from 'vue';
+
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -21,6 +25,7 @@ window.Vue = require('vue');
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.use(VueSweetalert2);
 Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
 Vue.component('fecha-receta', require('./components/FechaReceta.vue').default);
 Vue.component('eliminar-receta', require('./components/EliminarReceta.vue').default);

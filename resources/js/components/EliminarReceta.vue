@@ -11,7 +11,39 @@ export default {
     props: ['recetaId'],
     methods: {
         eliminarReceta() {
-            console.log('diste click', this.recetaId);
+            this.$swal({
+                title: '¿Deseas eliminar esta Receta?',
+                text: "Una vez eliminada, no se puede recuperar",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si',
+            }).then((result) => {
+            if (result.value) {
+                const params = {
+                    id: this.recetaId
+                }
+                // Enviar peticion al servidor
+                axios.post(`/recetas/${this.recetaId}`, {params, _method: 'delete'})
+                    .then(respuesta => {
+                        this.$swal({
+                            title: 'Receta Eliminada!',
+                            text: 'Se eliminó la receta.',
+                            icon: 'success'
+                         })
+
+                         //Eliminar receta del DOM
+                         this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+
+
+                
+            }
+            })
         }
     }
 }

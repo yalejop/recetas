@@ -184,5 +184,5 @@ class RecetaController extends Controller
 
         return redirect()->route('recetas.index');
     }
-    
+
 }
