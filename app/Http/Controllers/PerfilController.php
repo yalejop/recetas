@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Perfil;
+use App\User;
 use Illuminate\Http\Request;
 
 class PerfilController extends Controller
@@ -27,7 +28,7 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
-        return view('perfiles.edit');
+        return view('perfiles.edit', compact('perfil'));
     }
 
     /**

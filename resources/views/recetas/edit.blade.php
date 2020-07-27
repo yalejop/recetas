@@ -24,16 +24,16 @@
                         <label for="titulo">Titulo Receta:</label>
                         <input type="text" name="titulo" class="form-control @error('titulo')
                         is-invalid
-                    @enderror" id="titulo"
+                     @enderror" id="titulo"
                         placeholder="Título Receta"
                         value="{{$receta->titulo}}">
                         
                     
-                    @error('titulo')
+                     @error('titulo')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{$message}}</strong>
                         </span>
-                    @enderror
+                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="categoria">Categoria:</label>

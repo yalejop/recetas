@@ -21,8 +21,11 @@ Route::get('/', function () {
 
 Route::resource('/recetas', 'RecetaController');
 
-Auth::routes();
-
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/perfiles', 'PerfilController')->names('perfiles');
+Route::get('/perfiles/{perfil}', 'PerfilController@show')->name('perfiles.show');
+
+Route::get('/perfiles/{perfil}/edit', 'PerfilController@edit')->name('perfiles.edit');
+
+
+Auth::routes();
