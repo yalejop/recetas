@@ -8,45 +8,15 @@ use Illuminate\Http\Request;
 class PerfilController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Perfil  $perfil
      * @return \Illuminate\Http\Response
      */
-    public function show(Perfil $perfil)
+    public function show($id)
     {
-        //
+        $perfil = Perfil::find($id);
+        return view('perfiles.show', compact('perfil'));
     }
 
     /**
@@ -57,7 +27,7 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
-        //
+        return view('perfiles.edit');
     }
 
     /**

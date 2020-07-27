@@ -24,3 +24,5 @@ Route::resource('/recetas', 'RecetaController');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/perfiles', 'PerfilController')->names('perfiles');
