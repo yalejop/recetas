@@ -24,9 +24,9 @@ class RecetaController extends Controller
     public function index()
     {
         //auth()->user()->recetas->dd();
-
+        $usuario = auth()->user();
         $recetas = Auth::user()->recetas;
-        return view('recetas.index', compact('recetas'));
+        return view('recetas.index', compact('recetas', 'usuario'));
     }
 
     /**
@@ -143,9 +143,9 @@ class RecetaController extends Controller
             'preparacion' => 'required',
             'ingredientes' => 'required',
             'categoria' => 'required',
-        ]);
-
+        ]);          
         //Asignar los valores
+  
         $receta->titulo = $data['titulo'];
         $receta->preparacion = $data['preparacion'];
         $receta->ingredientes = $data['ingredientes'];

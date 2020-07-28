@@ -27,5 +27,7 @@ Route::get('/perfiles/{perfil}', 'PerfilController@show')->name('perfiles.show')
 
 Route::get('/perfiles/{perfil}/edit', 'PerfilController@edit')->name('perfiles.edit');
 
+Route::put('/perfiles/{perfil}', 'PerfilController@update')->name('perfiles.update');
+
 
 Auth::routes();

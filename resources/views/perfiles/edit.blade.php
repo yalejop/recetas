@@ -6,7 +6,9 @@
 
 @section('botones')
 
-    <a href="{{route('recetas.index')}}" class="btn btn-primary mr-2">Back</a>
+    <a href="{{route('recetas.index')}}" class="btn btn-outline-primary mr-2 text-uppercase font-weight-bold">
+        <svg class="icono" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>Back
+    </a>
     
 @endsection
 
@@ -17,7 +19,11 @@
     <h1 class="text-center">Editar Mi Perfil</h1>
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 bg-white p-3">
-            <form action="">
+            <form action="{{route('perfiles.update', $perfil->id)}}" 
+                method="POST" 
+                enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label for="titulo">Nombre:</label>
                     <input type="text" 
@@ -26,8 +32,8 @@
                         is-invalid
                     @enderror" 
                     id="nombre"
-                    placeholder="Tu Nombre">
-                    {{-- value="{{$perfil->nombre}}"> --}}
+                    placeholder="Tu Nombre"
+                    value="{{$perfil->usuario->name}}">
                         
                     @error('nombre')
                         <span class="invalid-feedback d-block" role="alert">
@@ -44,7 +50,7 @@
                     @enderror" 
                     id="url"
                     placeholder="Tu Sitio Web"
-                    value="{{$perfil->url}}">
+                    value="{{$perfil->usuario->url}}">
                         
                     @error('url')
                         <span class="invalid-feedback d-block" role="alert">
@@ -54,7 +60,8 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="biografia">Biografia:</label>
-                    <input type="hidden" name="biografia" id="biografia">
+                    <input type="hidden" name="biografia" id="biografia"
+                    value="{{$perfil->biografia}}">
                     <trix-editor
                     class="form-control @error('biografia')
                     is-invalid @enderror"
@@ -77,9 +84,8 @@
 
                      @if ( $perfil->imagen)
                         <div class="mt-4">
-                            <p>Imagen Actual:</p>
-    {{-- 
-                            <img src="/storage/{{$receta->imagen}}" alt="Imagen a editar" style="width: 300px"> --}}
+                            <p>Imagen Actual:</p> 
+                            <img src="/storage/{{$perfil->imagen}}" alt="Imagen a editar" style="width: 300px">
                         </div>
 
                         @error('imagen')
@@ -88,6 +94,9 @@
                             </span>
                         @enderror
                     @endif
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Actualizar Perfil">
                 </div>
             </form>
         </div>
