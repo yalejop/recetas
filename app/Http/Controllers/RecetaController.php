@@ -25,7 +25,7 @@ class RecetaController extends Controller
     {
         //auth()->user()->recetas->dd();
         $usuario = auth()->user();
-        $recetas = Auth::user()->recetas;
+        $recetas = Auth::user()->recetas()->paginate(4);
         return view('recetas.index', compact('recetas', 'usuario'));
     }
 
