@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Receta extends Model
 {
@@ -21,5 +22,11 @@ class Receta extends Model
     public function autor() 
     {
         return $this->belongsTo(User::class, 'user_id'); //FK de esta tabla
+    }
+
+    //likes que ha recibido una receta. Relacion n:n
+    public function likes()
+    {
+        return $this->BelongsToMany(User::class, 'likes_receta');
     }
 }
