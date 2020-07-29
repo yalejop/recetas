@@ -50,7 +50,9 @@
                 </h2>
                 {!!$receta->ingredientes!!}
             </div>
-            <like-button></like-button>
+            <like-button
+                receta-id = "{{$receta->id}}"
+            ></like-button>
 
         </div>
 
