@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('botones')
-
-    <a href="{{route('recetas.create')}}" class="btn btn-primary mr-2">Crear Receta</a>
-    
+    @include('ui.navegacion')
 @endsection
 
 @section('content')
@@ -39,6 +37,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="col-12 mt-4 justify-content-center d-flex">
+            {{$recetas->links()}}
+        </div>
     </div>
 
 @endsection
