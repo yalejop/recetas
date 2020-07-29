@@ -50,6 +50,7 @@
                 </h2>
                 {!!$receta->ingredientes!!}
             </div>
+            <like-button></like-button>
 
         </div>
 
