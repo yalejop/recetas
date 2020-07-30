@@ -83,10 +83,10 @@
 
         <div class="container">
             <div class="row">
-                <div class="py-4 mt-5 col-12">
+                <div class="py-4 mt-2 col-12">
                     @yield('botones')
                 </div>
-                <main class="py-4 mt-5 col-12">
+                <main class="py-4 mt-2 col-12">
                     @yield('content')
                 </main>
             </div>
