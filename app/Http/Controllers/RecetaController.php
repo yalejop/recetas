@@ -110,7 +110,13 @@ class RecetaController extends Controller
         //$receta = Receta::find($receta);
         //$receta = Receta::findOrFail($receta);
 
-        return view('recetas.show', compact('receta'));
+        //obtener si el usuario actual le gusta la receta y esta autenticado
+        $like = (auth()->user()) ? auth()->user()->meGusta->contains($receta->id) : false;
+
+        //pasar ala vista la cantidad de likes en las recetas
+        $likes = $receta->likes->count();
+
+        return view('recetas.show', compact('receta', 'like', 'likes'));
     }
 
     /**
