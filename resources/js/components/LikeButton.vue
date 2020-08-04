@@ -9,14 +9,16 @@
         props: ['recetaId'],
         methods: {
             likeReceta() {
-                axios.post('/recetas/' + this.recetaId)
-                    .then(respuesta => {
-                        console.log(respuesta)
+                axios.post('/recetas/' +this.recetaId)
+                    .then(
+                        respuesta => {
+                            console.log(respuesta)
                     })
-                    .catch(error => {
+                    .catch
+                     (error => {
                         console.log(error)
                     });
             }
         }
-    }
+    }    
 </script>

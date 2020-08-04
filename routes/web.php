@@ -21,6 +21,9 @@ Route::resource('/recetas', 'RecetaController');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+//buscador de recetas
+Route::get('/buscar', 'RecetaController@search')->name('buscar.show');
+
 Route::get('/perfiles/{perfil}', 'PerfilController@show')->name('perfiles.show');
 
 Route::get('/perfiles/{perfil}/edit', 'PerfilController@edit')->name('perfiles.edit');
