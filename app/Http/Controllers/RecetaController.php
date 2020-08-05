@@ -14,7 +14,7 @@ class RecetaController extends Controller
 {
     public function __construct() 
     {
-        $this->middleware('auth', ['except' => 'show']);
+        $this->middleware('auth', ['except' => ['show', 'search']]);
     }
     /**
      * Display a listing of the resource.
@@ -25,6 +25,8 @@ class RecetaController extends Controller
     {
         //auth()->user()->recetas->dd();
         $usuario = auth()->user();
+
+        //Recetas con Paginación
         $recetas = Auth::user()->recetas()->paginate(4);
         return view('recetas.index', compact('recetas', 'usuario'));
     }
@@ -110,7 +112,13 @@ class RecetaController extends Controller
         //$receta = Receta::find($receta);
         //$receta = Receta::findOrFail($receta);
 
-        return view('recetas.show', compact('receta'));
+        //obtener si el usuario actual le gusta la receta y esta autenticado
+        $like = (auth()->user()) ? auth()->user()->meGusta->contains($receta->id) : false;
+
+        //pasar ala vista la cantidad de likes en las recetas
+        $likes = $receta->likes->count();
+
+        return view('recetas.show', compact('receta', 'like', 'likes'));
     }
 
     /**
@@ -185,6 +193,18 @@ class RecetaController extends Controller
         $receta->delete();
 
         return redirect()->route('recetas.index');
+    }
+
+    public function search(Request $request)
+    {
+        //$busqueda = $request['buscar'];
+        $busqueda = $request->get('buscar');
+
+        $recetas = Receta::where('titulo', 'like', '%' . $busqueda. '%')->paginate(1);
+
+        $recetas->appends(['buscar' => $busqueda]);
+
+        return view('busquedas.show', compact('recetas', 'busqueda'));
     }
 
 }

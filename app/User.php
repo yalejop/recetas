@@ -57,10 +57,10 @@ class User extends Authenticatable
 
      /**relacion 1:1 de Usuarios y perfil */
 
-     public function perfil()
-     {
-         return $this->hasOne(Perfil::class);
-     }
+    public function perfil()
+    {
+        return $this->hasOne(Perfil::class);
+    }
 
      // relacion que el usuario le ha dado me gusta. Relacion n:n
     public function meGusta()

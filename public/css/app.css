@@ -72,7 +72,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #FDFEFF;
+  background-color: #f5edee;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -510,7 +510,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #FDFEFF;
+  background-color: #f5edee;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -4275,15 +4275,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #FDFEFF, 0 0 0 0.2rem rgba(235, 104, 100, 0.25);
+  box-shadow: 0 0 0 1px #f5edee, 0 0 0 0.2rem rgba(235, 104, 100, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #FDFEFF, 0 0 0 0.2rem rgba(235, 104, 100, 0.25);
+  box-shadow: 0 0 0 1px #f5edee, 0 0 0 0.2rem rgba(235, 104, 100, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #FDFEFF, 0 0 0 0.2rem rgba(235, 104, 100, 0.25);
+  box-shadow: 0 0 0 1px #f5edee, 0 0 0 0.2rem rgba(235, 104, 100, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4489,8 +4489,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #FDFEFF;
-  border-color: #dee2e6 #dee2e6 #FDFEFF;
+  background-color: #f5edee;
+  border-color: #dee2e6 #dee2e6 #f5edee;
 }
 
 .nav-tabs .dropdown-menu {
@@ -10949,6 +10949,112 @@ trix-editor {
 
 .icono {
   width: 36px;
+}
+
+.barra {
+  background-color: #ED4646 !important;
+}
+
+.fecha {
+  color: #ED4646 !important;
+}
+
+.receta-meta p {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #FFF;
+  font-size: 1.4rem;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #FFF;
+}
+
+.titulo-categoria {
+  font-family: "Cabin", sans-serif;
+  color: #333;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #ED4646 !important;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  padding-right: 2rem;
+}
+
+.btn-receta,
+.btn-receta:hover {
+  background-color: #ED4646 !important;
+  border: none;
+}
+
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex: 1 0 auto;
+  height: 100%;
+}
+
+.card-body {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.categorias-bg {
+  background-color: #fff;
+}
+
+.categorias-bg .nav-link {
+  color: #222 !important;
+  display: inline-block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  font-size: 1.2rem !important;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.categorias-bg .nav-link:before,
+.categorias-bg .nav-link:after {
+  content: "";
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.categorias-bg .nav-link:before {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: #ED4646;
+  transform: translateX(-100%);
+}
+
+.categorias-bg .nav-link:hover:before {
+  transform: translateX(0);
+}
+
+.hero-categorias {
+  background-image: linear-gradient(to bottom, rgba(70, 70, 70, 0.4), rgba(53, 53, 53, 0.571)), url(/images/bgimagen.jpg?871145cd0e3ea995c42306a5378de821);
+  height: 30rem;
+  background-size: cover;
+  background-position: top center;
+}
+
+.hero-categorias .texto-buscar p {
+  font-size: 1.4rem;
+  color: #FFF;
 }
 
 .like-btn {

@@ -11,7 +11,7 @@
     
     {{-- <h1>{{$receta}}</h1> --}}
 
-    <article class="contenido-receta">
+    <article class="contenido-receta bg-white p-5 shadow">
         <h1 class="text-center mb-4">
             {{$receta->titulo}}
         </h1>
@@ -19,15 +19,20 @@
         <div class="imagen-receta">
             <img src="/storage/{{$receta->imagen}}" alt="imagen receta" class="w-100">
         </div>
-        <div class="receta-meta mt-2">
+        <div class="receta-meta mt-3">
             <p>
                 <span class="font-weight-bold text-primary">Escrito en:</span>
-                {{$receta->categoria->nombre}}
+                <a class="text-dark" href="{{ route('categorias.show', $receta->categoria->id)}}">
+                    {{$receta->categoria->nombre}}
+                </a>
+                
             </p>
             <p>
                 <span class="font-weight-bold text-primary">Autor:</span>
+                <a class="text-dark" href="{{ route('perfiles.show', $receta->autor->id)}}">
+                    {{$receta->autor->name}}
+                </a>
                 {{-- TODO : mostrar el usuario --}}
-            {{$receta->autor->name}}
             </p>
             <p>
                 <span class="font-weight-bold text-primary">Fecha:</span>
@@ -50,9 +55,14 @@
                 </h2>
                 {!!$receta->ingredientes!!}
             </div>
-            <like-button
-                receta-id = "{{$receta->id}}"
-            ></like-button>
+
+            <div class="justify-content-center row text-center">
+                <like-button
+                    receta-id = "{{$receta->id}}"
+                    like = "{{$like}}"
+                    likes = "{{$likes}}"
+                ></like-button>
+            </div>
 
         </div>
 

@@ -15,13 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'InicioController@index')->name('inicio.index');
 
 Route::resource('/recetas', 'RecetaController');
 
+Route::get('/categoria/{categoriaReceta}', 'CategoriasController@show')->name('categorias.show');
+
 //Route::get('/home', 'HomeController@index')->name('home');
+
+//buscador de recetas
+Route::get('/buscar', 'RecetaController@search')->name('buscar.show');
 
 Route::get('/perfiles/{perfil}', 'PerfilController@show')->name('perfiles.show');
 
