@@ -19,6 +19,8 @@ Route::get('/', 'InicioController@index')->name('inicio.index');
 
 Route::resource('/recetas', 'RecetaController');
 
+Route::get('/categoria/{categoriaReceta}', 'CategoriasController@show')->name('categorias.show');
+
 //Route::get('/home', 'HomeController@index')->name('home');
 
 //buscador de recetas
