@@ -41,6 +41,18 @@
             @endforeach
         </div>
     </div>
+
+    <div class="container">
+        <h2 class="titulo-categoria text-uppercase mt-5 mb-4">
+            Recetas más Votadas
+        </h2>
+        <div class="row">
+            @foreach ($votados as $receta)
+                @include('ui.receta')
+            @endforeach
+        </div>
+    </div>
+
     @foreach ($recetas as $key => $grupo)
         <div class="container">
             <h2 class="titulo-categoria text-uppercase mt-5 mb-4">
@@ -49,16 +61,7 @@
             <div class="row">
                 @foreach ($grupo as $recetas)
                     @foreach ($recetas as $receta)
-                        <div class="col-md-4 mt-4">
-                            <div class="card shadow">
-                                <img class="card-img-top" src="/storage/{{$receta->imagen}}" alt="Imagen recetas">
-                                <div class="card-body">
-                                    <h3 class="card-title">
-                                        {{$receta->titulo}}
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
+                       @include('ui.receta')
                     @endforeach
                 @endforeach
             </div>
